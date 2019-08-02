@@ -1,10 +1,7 @@
 const searchUrl = 'https://developer.nps.gov/api/v1/places?'
 const apiKey = 'api_key=z2hPxOk745e1ir6aS8UO3ro3YncW3fVWbsfSUOzv'
 
-// https://developer.nps.gov/api/v1/places?stateCode=CA&stateCode=TX&api_key=z2hPxOk745e1ir6aS8UO3ro3YncW3fVWbsfSUOzv
-
-// https://developer.nps.gov/api/v1/parks
-// ?parkCode=acad&api_key=z2hPxOk745e1ir6aS8UO3ro3YncW3fVWbsfSUOzv
+// EXAMPLE ----- https://developer.nps.gov/api/v1/places?stateCode=CA&stateCode=TX&api_key=z2hPxOk745e1ir6aS8UO3ro3YncW3fVWbsfSUOzv
 
 function apiRequest(userInput) {
     const urlString = createApiString(userInput)
