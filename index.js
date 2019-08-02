@@ -37,6 +37,15 @@ function makeFetchRequest(urlString) {
 
 function renderHTML(jsonResult) {
     console.log(jsonResult)
+    for (let i = 0; i < jsonResult.length; i++) {
+        const repoName = jsonResult[i].name
+        const repoUrl = jsonResult[i].url
+    
+        $('.results').append(`
+        <div class='repo-name'>${repoName}</div>
+        <div class="repo-url">${repoUrl}</div>
+    `)
+    }
     // traverse items, get stuff
     //display repo name
     //display repo URL
