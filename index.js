@@ -1,5 +1,7 @@
-const searchUrl = 'https://developer.nps.gov/api/v1/places?'
+const searchUrl = 'https://developer.nps.gov/api/v1/places?stateCode='
 const apiKey = 'api_key=z2hPxOk745e1ir6aS8UO3ro3YncW3fVWbsfSUOzv'
+
+https://developer.nps.gov/api/v1/places?stateCode=ca%2Cny%2Ctx%2Cut%2Caz&api_key=z2hPxOk745e1ir6aS8UO3ro3YncW3fVWbsfSUOzv
 
 // EXAMPLE ----- https://developer.nps.gov/api/v1/places?stateCode=CA&stateCode=TX&api_key=z2hPxOk745e1ir6aS8UO3ro3YncW3fVWbsfSUOzv
 
@@ -9,15 +11,9 @@ function apiRequest(userInput) {
 }
 
 function createApiString(userInput) {
-    // search ?places=statecode
     console.log(`working with ${userInput}`)
-    const stateArray = userInput.split(',')
-    const stateSnippet = []
-    for (let i=0;i<stateArray.length;i++) {
-        stateSnippet.push(`stateCode=${stateArray[i]}&`)
-    }
-    const joinedState = stateSnippet.join('')
-    const urlString = `${searchUrl}${joinedState}${apiKey}`
+
+    const urlString = `${searchUrl}${userInput.trim()}&${apiKey}`
     console.log(`making URL  ${urlString}`)
     return urlString
 }
