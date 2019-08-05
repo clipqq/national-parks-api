@@ -1,4 +1,4 @@
-const searchUrl = 'https://developer.nps.gov/api/v1/places?stateCode='
+const searchUrl = 'https://developer.nps.gov/api/v1/places?limit=10&stateCode='
 const apiKey = 'api_key=z2hPxOk745e1ir6aS8UO3ro3YncW3fVWbsfSUOzv'
 
 https://developer.nps.gov/api/v1/places?stateCode=ca%2Cny%2Ctx%2Cut%2Caz&api_key=z2hPxOk745e1ir6aS8UO3ro3YncW3fVWbsfSUOzv
@@ -7,7 +7,7 @@ https://developer.nps.gov/api/v1/places?stateCode=ca%2Cny%2Ctx%2Cut%2Caz&api_key
 
 function apiRequest(userInput) {
     const urlString = createApiString(userInput)
-    const jsonResult = makeFetchRequest(urlString)
+    makeFetchRequest(urlString)
 }
 
 function createApiString(userInput) {
@@ -42,13 +42,16 @@ function makeFetchRequest(urlString) {
 function renderHTML(jsonResult) {
     console.log(jsonResult)
     $('.results').empty()
-    for (let i = 0; i < jsonResult.length; i++) {
-        const repoName = jsonResult[i].name
-        const repoUrl = jsonResult[i].url
+    for (let i = 0; i < jsonResult.data.length; i++) {
+        const parkName = jsonResult.data[i].title
+        const description = jsonResult.data[i].url
+        const parkUrl = jsonResult.data[i].listingdescription
+        console.log(parkName,parkUrl,description)
 
         $('.results').append(`
-        <div class='repo-name'>${repoName}</div>
-        <div class="repo-url">${repoUrl}</div>
+        <div class='park-name'>${parkName}</div>
+        <div class="park-description">${description}</div>
+        <div class="park-url">${parkUrl}</div>
     `)
     }
     // traverse items, get stuff
